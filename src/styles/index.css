@@ -886,18 +886,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .hero__cta-btn { width: 100%; justify-content: center; }
   .hero__left .btn-ghost { width: 100%; max-width: 340px; justify-content: center; }
   .hero__trust { justify-content: center; gap: 2rem; }
-  /* Compact orbit medallion above text */
-  .hero__right {
-    display: flex;
-    height: 220px;
-    order: -1;
-  }
-  .hero__card { display: none; }
-  .hero__orbit { width: 192px; height: 192px; }
-  .hero__orbit-ring--outer { width: 192px; height: 192px; }
-  .hero__orbit-ring--mid { width: 144px; height: 144px; }
-  .hero__orbit-ring--inner { width: 100px; height: 100px; }
-  .hero__orbit-core { width: 90px; height: 90px; }
+  .hero__secondary-actions { width: 100%; max-width: 340px; }
+  .hero__secondary-actions > * { flex: 1; justify-content: center; }
+  /* Hide orbital ring system on mobile */
+  .hero__right { display: none; }
   .hero__ring-logo-img { width: 64px; }
   /* Expand glow on small orbit */
   .hero__orbit-glow { inset: -28px; background: radial-gradient(circle, rgba(242,101,34,.22) 0%, transparent 70%); }
