@@ -32,7 +32,7 @@ export default function Hero() {
       {/* Looping background video */}
       <video
         className="hero__video"
-        src="/Video1.mov"
+        src="/Video1.mp4"
         autoPlay
         loop
         muted
