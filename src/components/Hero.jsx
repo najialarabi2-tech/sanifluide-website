@@ -32,12 +32,13 @@ export default function Hero() {
       {/* Looping background video */}
       <video
         className="hero__video"
-        src="https://res.cloudinary.com/dm5ez3zp8/video/upload/Video1_skme9w.mp4"
         autoPlay
         loop
         muted
         playsInline
-      />
+      >
+        <source src="https://res.cloudinary.com/dm5ez3zp8/video/upload/Video1_skme9w" type="video/mp4" />
+      </video>
       <div className="hero__video-overlay" />
 
       <div className="container hero__content">
