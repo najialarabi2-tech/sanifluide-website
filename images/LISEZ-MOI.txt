@@ -1,0 +1,11 @@
+Images folder — drop your photos from Desktop into this folder.
+
+Suggested naming:
+- logo.png
+- hero-bg.jpg
+- project-1.jpg (bureaux Paris)
+- project-2.jpg (restaurant Lyon)
+- project-3.jpg (entrepôt)
+- team-jean-marc.jpg
+- team-sophie.jpg
+- team-karim.jpg
