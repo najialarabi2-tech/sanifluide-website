@@ -118,7 +118,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile menu */}
-      <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
+      <div className={`mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu__links">
           {NAV_LINKS.map(link => (
             <a

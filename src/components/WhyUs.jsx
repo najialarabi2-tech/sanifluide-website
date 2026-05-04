@@ -105,6 +105,7 @@ export default function WhyUs() {
                       src={src}
                       alt={`Réalisation Sanifluide ${i + 1}`}
                       loading={i === active ? 'eager' : 'lazy'}
+                      decoding="async"
                     />
                   </div>
                 )
@@ -200,6 +201,7 @@ export default function WhyUs() {
               src={IMGS[active]}
               alt={`Réalisation Sanifluide ${active + 1}`}
               className="lightbox__img"
+              decoding="async"
             />
           </div>
 
@@ -230,7 +232,7 @@ export default function WhyUs() {
                 onClick={() => setActive(i)}
                 aria-label={`Image ${i + 1}`}
               >
-                <img src={src} alt="" loading="lazy" />
+                <img src={src} alt="" loading="lazy" decoding="async" />
               </button>
             ))}
           </div>

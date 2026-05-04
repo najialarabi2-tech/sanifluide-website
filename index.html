@@ -11,6 +11,7 @@
     <meta name="author" content="Sanifluide Maroc" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://sanifluide.com/" />
+    <meta name="theme-color" content="#0A0A0A" />
 
     <!-- Open Graph (WhatsApp, Facebook, LinkedIn previews) -->
     <meta property="og:type" content="website" />
@@ -33,12 +34,63 @@
     <!-- Favicon -->
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="/images/logo.png" />
+
+    <!-- Performance hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Sanifluide Maroc",
+      "description": "Sanifluide Maroc, expert en génie climatique depuis 1996. Ventilation VMC, climatisation VRV, chauffage et protection incendie à Tanger et partout au Maroc.",
+      "url": "https://sanifluide.com/",
+      "logo": "https://sanifluide.com/images/logo2.jpg",
+      "image": "https://sanifluide.com/images/logo2.jpg",
+      "telephone": "+212661986306",
+      "email": "contact@sanifluide.com",
+      "foundingDate": "1996",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tanger",
+        "addressCountry": "MA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "35.7595",
+        "longitude": "-5.8340"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Maroc"
+      },
+      "serviceType": [
+        "Ventilation VMC",
+        "Climatisation VRV",
+        "Chauffage PAC",
+        "Protection Incendie"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/sanifluide.maroc/"
+      ],
+      "priceRange": "$$"
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="font-family:sans-serif;text-align:center;padding:4rem 2rem;background:#0A0A0A;color:#fff;min-height:100vh">
+        <h1>Sanifluide Maroc</h1>
+        <p>Veuillez activer JavaScript pour utiliser ce site.</p>
+        <p>Contactez-nous : <a href="tel:+212661986306" style="color:#F26522">+212 661 986 306</a></p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

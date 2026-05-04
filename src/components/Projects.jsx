@@ -67,9 +67,12 @@ export default function Projects() {
         <div className="projects__grid" ref={ref}>
           {PROJECTS.map(p => (
             <div className={`project-card reveal ${p.cls}`} key={p.title}>
-              <div
-                className="project-card__thumb-bg"
-                style={{ backgroundImage: `url("${p.thumbImg}")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+              <img
+                src={p.thumbImg}
+                alt={p.title}
+                loading="lazy"
+                decoding="async"
+                className="project-card__thumb-img"
               />
               <div className="project-card__overlay" />
               <div className="project-card__num">{p.num}</div>
