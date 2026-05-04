@@ -12,12 +12,12 @@ export function useReveal() {
       (entries) => {
         entries.forEach((entry, i) => {
           if (entry.isIntersecting) {
-            setTimeout(() => entry.target.classList.add('visible'), i * 120)
+            setTimeout(() => entry.target.classList.add('visible'), i * 70)
             observer.unobserve(entry.target)
           }
         })
       },
-      { threshold: 0.1 }
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
     )
     targets.forEach(t => observer.observe(t))
     return () => observer.disconnect()

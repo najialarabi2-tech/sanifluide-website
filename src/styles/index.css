@@ -903,6 +903,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--bg);
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
 }
 .services::before {
   content: '';
@@ -1045,6 +1047,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 120px;
 }
 .stats::before {
   content: '';
@@ -1110,6 +1114,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .whyus {
   padding: 5rem 0;
   background: var(--bg);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 700px;
 }
 .whyus__inner {
   display: grid;
@@ -1439,6 +1445,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--bg-2);
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 700px;
 }
 .projects::before {
   content: '';
@@ -1638,6 +1646,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--bg);
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
 }
 
 /* Glowing background orbs */
@@ -2189,8 +2199,8 @@ a.contact__info-val--wa:hover { color: #1da851 !important; }
 ===================================================== */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s var(--ease), transform .7s var(--ease);
+  transform: translateY(20px);
+  transition: opacity .45s var(--ease), transform .45s var(--ease);
 }
 .reveal.visible {
   opacity: 1;
@@ -2198,8 +2208,8 @@ a.contact__info-val--wa:hover { color: #1da851 !important; }
 }
 .reveal-left {
   opacity: 0;
-  transform: translateX(-28px);
-  transition: opacity .7s var(--ease), transform .7s var(--ease);
+  transform: translateX(-20px);
+  transition: opacity .45s var(--ease), transform .45s var(--ease);
 }
 .reveal-left.visible {
   opacity: 1;
