@@ -417,21 +417,68 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .hero__notre {
-  animation: notreBreath 3s ease-in-out infinite;
+  animation: neonFlicker 4s linear infinite;
 }
-@keyframes notreBreath {
-  0%, 100% {
-    text-shadow:
-      0 0 8px rgba(242,101,34,.4),
-      0 0 20px rgba(242,101,34,.2);
+@keyframes neonFlicker {
+  0% {
+    text-shadow: 0 0 6px #F26522, 0 0 20px #F26522, 0 0 40px #F26522, 0 0 80px rgba(242,101,34,.4);
     opacity: 1;
   }
-  50% {
-    text-shadow:
-      0 0 20px rgba(242,101,34,.9),
-      0 0 50px rgba(242,101,34,.5),
-      0 0 90px rgba(242,101,34,.25);
-    opacity: .85;
+  3% {
+    text-shadow: none;
+    opacity: .15;
+  }
+  4% {
+    text-shadow: 0 0 6px #F26522, 0 0 20px #F26522, 0 0 40px #F26522, 0 0 80px rgba(242,101,34,.4);
+    opacity: 1;
+  }
+  9% {
+    text-shadow: 0 0 6px #F26522, 0 0 20px #F26522, 0 0 40px #F26522, 0 0 80px rgba(242,101,34,.4);
+    opacity: 1;
+  }
+  10% {
+    text-shadow: none;
+    opacity: .05;
+  }
+  11% {
+    text-shadow: 0 0 4px #F26522, 0 0 12px rgba(242,101,34,.6);
+    opacity: .7;
+  }
+  12% {
+    text-shadow: 0 0 6px #F26522, 0 0 20px #F26522, 0 0 40px #F26522, 0 0 80px rgba(242,101,34,.4);
+    opacity: 1;
+  }
+  45% {
+    text-shadow: 0 0 6px #F26522, 0 0 20px #F26522, 0 0 40px #F26522, 0 0 80px rgba(242,101,34,.4);
+    opacity: 1;
+  }
+  46% {
+    text-shadow: 0 0 4px #F26522, 0 0 10px rgba(242,101,34,.5);
+    opacity: .6;
+  }
+  47% {
+    text-shadow: 0 0 6px #F26522, 0 0 20px #F26522, 0 0 40px #F26522, 0 0 80px rgba(242,101,34,.4);
+    opacity: 1;
+  }
+  76% {
+    text-shadow: 0 0 6px #F26522, 0 0 20px #F26522, 0 0 40px #F26522, 0 0 80px rgba(242,101,34,.4);
+    opacity: 1;
+  }
+  77% {
+    text-shadow: none;
+    opacity: .1;
+  }
+  78% {
+    text-shadow: none;
+    opacity: .1;
+  }
+  79% {
+    text-shadow: 0 0 6px #F26522, 0 0 20px #F26522, 0 0 40px #F26522, 0 0 80px rgba(242,101,34,.4);
+    opacity: 1;
+  }
+  100% {
+    text-shadow: 0 0 6px #F26522, 0 0 20px #F26522, 0 0 40px #F26522, 0 0 80px rgba(242,101,34,.4);
+    opacity: 1;
   }
 }
 
