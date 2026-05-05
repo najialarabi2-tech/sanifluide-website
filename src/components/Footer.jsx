@@ -98,37 +98,34 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Right: form card */}
-            <div className="contact__form-card">
-              <div className="contact__form-header">
-                <span className="contact__form-title">Envoyer un message</span>
-                <span className="contact__form-note">Réponse garantie sous 24h</span>
+            {/* WhatsApp CTA */}
+            <div id="whatsapp-contact" className="contact__whatsapp-mobile">
+              <WhatsAppIcon />
+              <div>
+                <div className="contact__whatsapp-mobile-title">Contactez-nous<br />sur WhatsApp</div>
+                <div className="contact__whatsapp-mobile-sub">Réponse rapide garantie · 7j/7</div>
               </div>
-              <form className="contact__form" onSubmit={onSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label">Nom</label>
-                    <input className="form-input" name="name" value={form.name} onChange={onChange} placeholder="Votre nom" required />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Email</label>
-                    <input className="form-input" name="email" type="email" value={form.email} onChange={onChange} placeholder="votre@email.com" required />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Téléphone (optionnel)</label>
-                  <input className="form-input" name="phone" value={form.phone} onChange={onChange} placeholder="+212 6XX XXX XXX" />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Message</label>
-                  <textarea className="form-textarea" name="message" value={form.message} onChange={onChange} placeholder="Décrivez votre projet ou votre besoin..." required />
-                </div>
-                <button type="submit" className="btn btn-primary contact__submit" disabled={status === 'sending'}>
-                  {status === 'sending' ? 'Envoi en cours...' : <><Send size={16} /> Envoyer le message</>}
-                </button>
-                {status === 'success' && <p className="form-status-success">✓ Message envoyé ! Nous vous répondrons sous 24h.</p>}
-                {status === 'error' && <p className="form-status-error">Une erreur est survenue. Veuillez réessayer ou nous appeler.</p>}
-              </form>
+              <a
+                href="https://wa.me/212661986306"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn contact__whatsapp-mobile-btn"
+              >
+                <WhatsAppIcon />
+                Ouvrir WhatsApp
+                <span style={{ marginLeft: 'auto', fontSize: '1.1rem' }}>↗</span>
+              </a>
+              <div className="contact__whatsapp-divider">ou</div>
+              <div className="contact__whatsapp-quick">
+                <a href="tel:+212661986306" className="contact__whatsapp-quick-link">
+                  <Phone size={16} />
+                  +212 661 986 306
+                </a>
+                <a href="mailto:contact@sanifluide.com" className="contact__whatsapp-quick-link">
+                  <Mail size={16} />
+                  contact@sanifluide.com
+                </a>
+              </div>
             </div>
 
           </div>

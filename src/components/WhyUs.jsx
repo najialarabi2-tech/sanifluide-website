@@ -43,17 +43,19 @@ export default function WhyUs() {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
   const [lightbox, setLightbox] = useState(false)
+  const [page, setPage] = useState(0)
   const total = IMGS.length
+  const totalPages = Math.ceil(total / 4)
 
   const prev = useCallback(() => setActive(i => (i - 1 + total) % total), [total])
   const next = useCallback(() => setActive(i => (i + 1) % total), [total])
 
-  // Auto-play (paused on hover or when lightbox open)
+  // Auto-cycle image groups (paused on hover or when lightbox open)
   useEffect(() => {
     if (paused || lightbox) return
-    const timer = setInterval(next, 3500)
+    const timer = setInterval(() => setPage(p => (p + 1) % totalPages), 3500)
     return () => clearInterval(timer)
-  }, [paused, lightbox, next])
+  }, [paused, lightbox, totalPages])
 
   // Keyboard navigation
   useEffect(() => {
@@ -77,75 +79,84 @@ export default function WhyUs() {
       <div className="container">
         <div className="whyus__inner">
 
-          {/* Gallery column */}
+          {/* Gallery column — bento mosaic */}
           <div
-            className="whyus__slideshow"
+            className="whyus__gallery"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="whyus__slides">
-              {/* Only render active ± 1 slides to keep DOM light */}
-              {IMGS.map((src, i) => {
-                const dist = Math.abs(i - active)
-                if (dist > 1) return (
-                  <div key={i} className="whyus__slide" aria-hidden="true" />
-                )
+            <div className="whyus__gallery-row">
+              <button
+                className="whyus__garrow whyus__garrow--prev"
+                onClick={() => setPage(p => (p - 1 + totalPages) % totalPages)}
+                aria-label="Groupe précédent"
+              >
+                <ChevronLeft size={20} />
+              </button>
+
+              <div className="whyus__gallery-grid">
+              {[0, 1, 2, 3].map((offset) => {
+                const idx = (page * 4 + offset) % total
+                const isLast = offset === 3
                 return (
                   <div
-                    key={i}
-                    className={`whyus__slide ${i === active ? 'whyus__slide--active' : ''}`}
+                    key={offset}
+                    className="whyus__gallery-cell"
+                    onClick={() => { setActive(idx); setLightbox(true) }}
                   >
                     <img
-                      src={src}
-                      alt={`Réalisation Sanifluide ${i + 1}`}
-                      loading={i === active ? 'eager' : 'lazy'}
+                      src={IMGS[idx]}
+                      alt={`Réalisation Sanifluide ${idx + 1}`}
+                      loading="lazy"
                       decoding="async"
                     />
+                    <div className="whyus__gallery-cell-overlay">
+                      <Expand size={18} />
+                    </div>
+                    {isLast && (
+                      <div className="whyus__gallery-more">
+                        <span>+{total - 3}</span>
+                        <small>photos</small>
+                      </div>
+                    )}
                   </div>
                 )
               })}
+              </div>
 
-              {/* Click-to-open overlay */}
+              {/* Next arrow */}
               <button
-                className="whyus__open-lightbox"
-                onClick={() => setLightbox(true)}
-                aria-label="Ouvrir la galerie"
+                className="whyus__garrow whyus__garrow--next"
+                onClick={() => setPage(p => (p + 1) % totalPages)}
+                aria-label="Groupe suivant"
               >
-                <Expand size={18} />
-                <span>Voir la galerie</span>
-              </button>
-
-              {/* Prev / Next arrows */}
-              <button className="whyus__arrow whyus__arrow--prev" onClick={e => { e.stopPropagation(); prev() }} aria-label="Image précédente">
-                <ChevronLeft size={20} />
-              </button>
-              <button className="whyus__arrow whyus__arrow--next" onClick={e => { e.stopPropagation(); next() }} aria-label="Image suivante">
                 <ChevronRight size={20} />
               </button>
-
-              {/* Counter */}
-              <div className="whyus__counter">{active + 1} / {total}</div>
             </div>
 
-            {/* Dot strip */}
-            <div className="whyus__dots">
-              {Array.from({ length: total }, (_, i) => {
-                const dist = Math.abs(i - active)
-                if (dist > 4) return null
-                return (
+            {/* Footer row */}
+            <div className="whyus__gallery-footer">
+              <div className="whyus__badge">
+                <span className="whyus__badge-num">30</span>
+                <span className="whyus__badge-text">ans d'expertise</span>
+              </div>
+              <div className="whyus__gallery-pages">
+                {Array.from({ length: totalPages }, (_, i) => (
                   <button
                     key={i}
-                    className={`whyus__dot ${i === active ? 'whyus__dot--active' : ''} ${dist === 4 ? 'whyus__dot--far' : ''}`}
-                    onClick={() => setActive(i)}
-                    aria-label={`Image ${i + 1}`}
+                    className={`whyus__gallery-dot ${i === page ? 'whyus__gallery-dot--active' : ''}`}
+                    onClick={() => setPage(i)}
+                    aria-label={`Groupe ${i + 1}`}
                   />
-                )
-              })}
-            </div>
-
-            <div className="whyus__badge">
-              <span className="whyus__badge-num">30</span>
-              <span className="whyus__badge-text">ans d'expertise</span>
+                ))}
+              </div>
+              <button
+                className="whyus__gallery-btn"
+                onClick={() => { setActive(0); setLightbox(true) }}
+              >
+                <Expand size={14} />
+                {total} réalisations
+              </button>
             </div>
           </div>
 
