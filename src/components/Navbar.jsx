@@ -106,6 +106,11 @@ export default function Navbar() {
             </a>
           </div>
 
+          <a href="tel:+212661986306" className="navbar__phone-mobile">
+            <Phone size={14} />
+            +212 661 986 306
+          </a>
+
           <button
             className={`navbar__hamburger${menuOpen ? ' open' : ''}`}
             onClick={() => setMenuOpen(o => !o)}

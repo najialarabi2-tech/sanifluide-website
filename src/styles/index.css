@@ -256,6 +256,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: rgba(242,101,34,.05);
 }
 .navbar__phone svg { color: var(--orange); flex-shrink: 0; }
+
+.navbar__phone-mobile {
+  display: none;
+}
+@media (max-width: 900px) {
+  .navbar__phone-mobile {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--orange);
+    white-space: nowrap;
+    margin-right: .5rem;
+  }
+  .navbar__phone-mobile svg { flex-shrink: 0; }
+}
 .navbar__whatsapp {
   display: flex;
   align-items: center;
@@ -885,6 +902,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .hero__secondary-actions > * { flex: 1; justify-content: center; }
   /* Hide orbital ring system on mobile */
   .hero__right { display: none; }
+  .hero__scroll { display: none; }
   .hero__ring-logo-img { width: 64px; }
   /* Expand glow on small orbit */
   .hero__orbit-glow { inset: -28px; background: radial-gradient(circle, rgba(242,101,34,.22) 0%, transparent 70%); }
