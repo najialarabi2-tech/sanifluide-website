@@ -36,8 +36,7 @@ export default function Hero() {
         loop
         muted
         playsInline
-        poster="/images/logo2.jpg"
-        preload="none"
+        preload="auto"
       >
         <source src="https://res.cloudinary.com/dm5ez3zp8/video/upload/Video1_skme9w" type="video/mp4" />
       </video>
