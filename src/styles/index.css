@@ -1189,6 +1189,37 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     backdrop-filter: blur(6px);
     border-color: rgba(255,255,255,.15);
   }
+
+  /* Square grid on mobile */
+  .whyus__gallery-grid {
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    gap: .3rem;
+  }
+
+  /* Stacked footer on mobile */
+  .whyus__gallery-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: .75rem;
+  }
+  .whyus__gallery-pages { order: 1; }
+  .whyus__gallery-btn {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    padding: .7rem 1rem;
+    font-size: .82rem;
+  }
+  .whyus__badge {
+    order: 0;
+    padding: .5rem 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-radius: 8px;
+  }
+  .whyus__badge-num { font-size: 1.3rem; }
 }
 .whyus__gallery-cell {
   position: relative;
