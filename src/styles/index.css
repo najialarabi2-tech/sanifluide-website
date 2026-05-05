@@ -2294,6 +2294,7 @@ a.contact__info-val--wa:hover { color: #1da851 !important; }
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
 }
 .contact__whatsapp-mobile::before {
   content: '';

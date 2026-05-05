@@ -101,7 +101,7 @@ export default function Navbar() {
             >
               <WhatsAppIcon />
             </a>
-            <a href="#contact" className="btn btn-primary btn-sm navbar__cta" onClick={e => go(e, '#contact')}>
+            <a href="#whatsapp-contact" className="btn btn-primary btn-sm navbar__cta" onClick={e => go(e, '#whatsapp-contact')}>
               Demander un devis
             </a>
           </div>
@@ -159,7 +159,7 @@ export default function Navbar() {
             <WhatsAppIcon />
             WhatsApp
           </a>
-          <a href="#contact" className="btn btn-primary" onClick={e => go(e, '#contact')}>
+          <a href="#whatsapp-contact" className="btn btn-primary" onClick={e => go(e, '#whatsapp-contact')}>
             Demander un devis
           </a>
         </div>

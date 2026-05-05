@@ -46,7 +46,7 @@ export default function CtaBanner() {
           {/* Right: actions */}
           <div className="cta__right">
             <div className="cta__actions">
-              <button className="btn btn-primary cta__btn-main" onClick={() => go('#contact')}>
+              <button className="btn btn-primary cta__btn-main" onClick={() => go('#whatsapp-contact')}>
                 Demander un devis gratuit →
               </button>
               <a href="tel:+212661986306" className="cta__call">

@@ -62,7 +62,7 @@ export default function Hero() {
             <div className="hero__cta-wrap">
               <div className="hero__cta-ring" />
               <div className="hero__cta-ring hero__cta-ring--2" />
-              <button className="btn btn-primary hero__cta-btn" onClick={() => go('#contact')}>
+              <button className="btn btn-primary hero__cta-btn" onClick={() => go('#whatsapp-contact')}>
                 <span className="hero__cta-pulse" />
                 <Send size={16} style={{ flexShrink: 0 }} /> Demander un devis gratuit
               </button>
