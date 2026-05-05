@@ -2428,5 +2428,5 @@ a.contact__info-val--wa:hover { color: #1da851 !important; }
   /* Stats */
   .stat-item__num { font-size: 1.4rem; }
   /* WhyUs grid 1-col on very small */
-  .whyus__grid { grid-template-columns: 1fr; }
+  .whyus__grid { grid-template-columns: 1fr 1fr; }
 }
