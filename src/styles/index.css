@@ -1180,6 +1180,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .whyus__garrow--prev:hover { transform: translateY(-50%) translateX(-2px); }
 .whyus__garrow--next { right: -52px; }
 .whyus__garrow--next:hover { transform: translateY(-50%) translateX(2px); }
+
+@media (max-width: 900px) {
+  .whyus__garrow--prev { left: .75rem; }
+  .whyus__garrow--next { right: .75rem; }
+  .whyus__garrow {
+    background: rgba(10,10,10,.6);
+    backdrop-filter: blur(6px);
+    border-color: rgba(255,255,255,.15);
+  }
+}
 .whyus__gallery-cell {
   position: relative;
   overflow: hidden;
