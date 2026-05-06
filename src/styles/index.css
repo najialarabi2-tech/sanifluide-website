@@ -2631,7 +2631,7 @@ a.contact__info-val--wa:hover { color: #1da851 !important; }
   justify-content: center;
   gap: .6rem;
   width: 100%;
-  background: var(--orange);
+  background: #25D366;
   color: #fff;
   font-weight: 700;
   font-size: .9rem;
@@ -2642,7 +2642,7 @@ a.contact__info-val--wa:hover { color: #1da851 !important; }
   transition: background .2s ease, transform .2s ease;
 }
 .wachat__cta:hover {
-  background: #c94e15;
+  background: #128C7E;
   transform: translateY(-1px);
 }
 

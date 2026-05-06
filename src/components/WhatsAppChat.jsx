@@ -46,7 +46,7 @@ export default function WhatsAppChat() {
           {/* Header */}
           <div className="wachat__header">
             <div className="wachat__avatar">
-              <img src="/images/logo.png" alt="Sanifluide" />
+              <img src="/images/Icon.png" alt="Sanifluide" />
               <span className="wachat__status" />
             </div>
             <div className="wachat__info">
