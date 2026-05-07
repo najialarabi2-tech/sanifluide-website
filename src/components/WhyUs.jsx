@@ -7,6 +7,9 @@ const ITEMS = [
     iconLg: <Award size={40} />,
     title: 'Expertise certifiée',
     text: 'Techniciens qualifiés RGE, habilités aux systèmes les plus exigeants.',
+    stat: '30+',
+    statLabel: 'ans d\'expérience',
+    color: 'orange',
     details: {
       intro: 'Notre équipe est composée de techniciens certifiés et régulièrement formés aux dernières technologies du génie climatique et de la sécurité incendie.',
       points: [
@@ -15,7 +18,7 @@ const ITEMS = [
         'Formation continue sur les systèmes VRV/VRF',
         'Maîtrise des normes EN 13779, NF S61-970',
         'Plus de 28 ans d\'expérience terrain',
-        'Partenaires agréés Daikin, Mitsubishi, LG',
+        'Partenaires agréés Daikin, Carrier, LG',
       ],
       footer: 'Nos certifications sont à jour et vérifiables auprès des organismes compétents.',
     },
@@ -25,6 +28,9 @@ const ITEMS = [
     iconLg: <Zap size={40} />,
     title: 'Réactivité garantie',
     text: 'Intervention sous 24h pour les urgences, 7 jours sur 7.',
+    stat: '24h',
+    statLabel: 'délai d\'intervention',
+    color: 'orange',
     details: {
       intro: 'Une panne de climatisation ou un problème incendie ne peut pas attendre. C\'est pourquoi Sanifluide s\'engage sur des délais d\'intervention stricts pour tous ses clients.',
       points: [
@@ -43,6 +49,9 @@ const ITEMS = [
     iconLg: <FileText size={40} />,
     title: 'Devis gratuit & transparent',
     text: 'Pas de mauvaises surprises — un devis clair avant chaque intervention.',
+    stat: '0 DH',
+    statLabel: 'étude & devis offerts',
+    color: 'orange',
     details: {
       intro: 'La transparence est au cœur de notre relation client. Chaque projet commence par une étude gratuite et un devis détaillé sans engagement.',
       points: [
@@ -61,6 +70,9 @@ const ITEMS = [
     iconLg: <ShieldCheck size={40} />,
     title: 'Garantie décennale',
     text: 'Nos installations couvertes et conformes aux normes en vigueur.',
+    stat: '10 ans',
+    statLabel: 'de garantie',
+    color: 'orange',
     details: {
       intro: 'Investir dans une installation technique, c\'est investir pour longtemps. Sanifluide vous protège avec une garantie décennale sur l\'ensemble de ses travaux.',
       points: [
@@ -267,7 +279,13 @@ export default function WhyUs() {
             <div>
               <div className="tag">Pourquoi Sanifluide ?</div>
               <h2 className="section-title">
-                Une équipe à votre<br /><span>service</span> depuis 1996
+                Une équipe à votre<br />
+                <span className="svc-underline">
+                  service
+                  <svg className="svc-underline__svg" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M2 8 Q50 2 100 7 Q150 12 198 5" stroke="var(--orange)" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </span>{' '}depuis 1996
               </h2>
               <p className="whyus__text">
                 Chez Sanifluide, chaque projet mérite une attention particulière.
@@ -277,8 +295,14 @@ export default function WhyUs() {
             </div>
             <div className="whyus__grid">
               {ITEMS.map(item => (
-                <div className="whyus__item whyus__item--clickable" key={item.title} onClick={() => setActiveItem(item)}>
-                  <div className="whyus__item-icon">{item.icon}</div>
+                <div className={`whyus__item whyus__item--clickable whyus__item--${item.color}`} key={item.title} onClick={() => setActiveItem(item)}>
+                  <div className="whyus__item-top">
+                    <div className="whyus__item-icon">{item.icon}</div>
+                    <div className={`whyus__item-stat whyus__item-stat--${item.color}`}>
+                      <span className="whyus__item-stat-value">{item.stat}</span>
+                      <span className="whyus__item-stat-label">{item.statLabel}</span>
+                    </div>
+                  </div>
                   <div>
                     <div className="whyus__item-title">{item.title}</div>
                     <div className="whyus__item-text">{item.text}</div>
