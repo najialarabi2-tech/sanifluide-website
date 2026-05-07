@@ -102,7 +102,7 @@ export default function Navbar() {
               <WhatsAppIcon />
             </a>
             <a href="#whatsapp-contact" className="btn btn-primary btn-sm navbar__cta" onClick={e => go(e, '#whatsapp-contact')}>
-              Demander un devis
+              Demander un devis <span className="navbar__cta-arrow">→</span>
             </a>
           </div>
 

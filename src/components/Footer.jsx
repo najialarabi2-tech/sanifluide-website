@@ -65,7 +65,7 @@ export default function Footer() {
               <div>
                 <div className="tag">Contactez-nous</div>
                 <h2 className="section-title">
-                  Démarrons votre<br /><span>projet ensemble</span>
+                  Démarrons votre<br /><span className="svc-underline">projet ensemble<svg className="svc-underline__svg" viewBox="0 0 260 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q65 2 130 7 Q195 12 258 5" stroke="var(--orange)" strokeWidth="3" fill="none" strokeLinecap="round"/></svg></span>
                 </h2>
                 <p className="contact__intro">
                   Décrivez-nous votre projet, nous vous répondons sous <strong>24h</strong> avec une estimation claire et sans engagement.

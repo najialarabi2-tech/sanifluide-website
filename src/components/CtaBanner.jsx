@@ -27,7 +27,7 @@ export default function CtaBanner() {
             </div>
             <h2 className="cta__title">
               Un projet en tête ?<br />
-              <span>Parlons-en.</span>
+              <span className="svc-underline">Parlons-en.<svg className="svc-underline__svg" viewBox="0 0 180 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q45 2 90 7 Q135 12 178 5" stroke="var(--orange)" strokeWidth="3" fill="none" strokeLinecap="round"/></svg></span>
             </h2>
             <p className="cta__sub">
               Notre équipe vous répond dans les <strong>24h</strong> et vous propose

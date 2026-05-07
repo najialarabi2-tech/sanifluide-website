@@ -61,7 +61,7 @@ export default function Hero() {
   const handleCardEnter = (e, title) => {
     setActiveCard(title)
     const rect = e.currentTarget.getBoundingClientRect()
-    const top = rect.top + window.scrollY - 148
+    const top = rect.bottom + 8
     const left = Math.min(rect.left, window.innerWidth - 230)
     setPopupPos({ top, left })
   }

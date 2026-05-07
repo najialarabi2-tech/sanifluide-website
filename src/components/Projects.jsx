@@ -147,7 +147,7 @@ export default function Projects() {
           <div>
             <div className="tag">Nos réalisations</div>
             <h2 className="section-title">
-              Quelques projets <span>récents</span>
+              Quelques projets <span className="svc-underline">récents<svg className="svc-underline__svg" viewBox="0 0 140 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q35 2 70 7 Q105 12 138 5" stroke="var(--orange)" strokeWidth="3" fill="none" strokeLinecap="round"/></svg></span>
             </h2>
           </div>
           <div className="projects__nav">
