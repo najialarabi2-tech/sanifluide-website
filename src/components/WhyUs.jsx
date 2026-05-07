@@ -1,11 +1,79 @@
 import { useEffect, useState, useCallback } from 'react'
-import { Award, Zap, FileText, ShieldCheck, ChevronLeft, ChevronRight, X, Expand } from 'lucide-react'
+import { Award, Zap, FileText, ShieldCheck, ChevronLeft, ChevronRight, X, Expand, CheckCircle2 } from 'lucide-react'
 
 const ITEMS = [
-  { icon: <Award size={22} />, title: 'Expertise certifiée', text: 'Techniciens qualifiés RGE, habilités aux systèmes les plus exigeants.' },
-  { icon: <Zap size={22} />, title: 'Réactivité garantie', text: 'Intervention sous 24h pour les urgences, 7 jours sur 7.' },
-  { icon: <FileText size={22} />, title: 'Devis gratuit & transparent', text: 'Pas de mauvaises surprises — un devis clair avant chaque intervention.' },
-  { icon: <ShieldCheck size={22} />, title: 'Garantie décennale', text: 'Nos installations couvertes et conformes aux normes en vigueur.' },
+  {
+    icon: <Award size={22} />,
+    iconLg: <Award size={40} />,
+    title: 'Expertise certifiée',
+    text: 'Techniciens qualifiés RGE, habilités aux systèmes les plus exigeants.',
+    details: {
+      intro: 'Notre équipe est composée de techniciens certifiés et régulièrement formés aux dernières technologies du génie climatique et de la sécurité incendie.',
+      points: [
+        'Certification RGE (Reconnu Garant de l\'Environnement)',
+        'Habilitations fluides frigorigènes F-Gas',
+        'Formation continue sur les systèmes VRV/VRF',
+        'Maîtrise des normes EN 13779, NF S61-970',
+        'Plus de 28 ans d\'expérience terrain',
+        'Partenaires agréés Daikin, Mitsubishi, LG',
+      ],
+      footer: 'Nos certifications sont à jour et vérifiables auprès des organismes compétents.',
+    },
+  },
+  {
+    icon: <Zap size={22} />,
+    iconLg: <Zap size={40} />,
+    title: 'Réactivité garantie',
+    text: 'Intervention sous 24h pour les urgences, 7 jours sur 7.',
+    details: {
+      intro: 'Une panne de climatisation ou un problème incendie ne peut pas attendre. C\'est pourquoi Sanifluide s\'engage sur des délais d\'intervention stricts pour tous ses clients.',
+      points: [
+        'Astreinte technique 7j/7 et jours fériés',
+        'Intervention d\'urgence sous 24h garantie',
+        'Équipes mobiles sur Tanger et alentours',
+        'Diagnostic à distance avant déplacement',
+        'Stock de pièces détachées courantes',
+        'Suivi de chantier en temps réel',
+      ],
+      footer: 'Contactez-nous à tout moment via WhatsApp pour une réponse immédiate.',
+    },
+  },
+  {
+    icon: <FileText size={22} />,
+    iconLg: <FileText size={40} />,
+    title: 'Devis gratuit & transparent',
+    text: 'Pas de mauvaises surprises — un devis clair avant chaque intervention.',
+    details: {
+      intro: 'La transparence est au cœur de notre relation client. Chaque projet commence par une étude gratuite et un devis détaillé sans engagement.',
+      points: [
+        'Étude technique et audit sur site gratuits',
+        'Devis détaillé poste par poste',
+        'Aucun frais caché ni supplément non annoncé',
+        'Délai de réponse sous 48h ouvrables',
+        'Comparatif de solutions adapté à votre budget',
+        'Accompagnement jusqu\'à la réception des travaux',
+      ],
+      footer: 'Demandez votre devis maintenant — c\'est gratuit et sans engagement.',
+    },
+  },
+  {
+    icon: <ShieldCheck size={22} />,
+    iconLg: <ShieldCheck size={40} />,
+    title: 'Garantie décennale',
+    text: 'Nos installations couvertes et conformes aux normes en vigueur.',
+    details: {
+      intro: 'Investir dans une installation technique, c\'est investir pour longtemps. Sanifluide vous protège avec une garantie décennale sur l\'ensemble de ses travaux.',
+      points: [
+        'Garantie décennale sur toutes les installations',
+        'Assurance responsabilité civile professionnelle',
+        'Conformité aux normes marocaines et européennes',
+        'Procès-verbal de réception et documentation complète',
+        'Contrats de maintenance préventive disponibles',
+        'Service après-vente réactif et professionnel',
+      ],
+      footer: 'Nos installations sont assurées et conformes aux réglementations en vigueur au Maroc.',
+    },
+  },
 ]
 
 const IMGS = [
@@ -39,11 +107,45 @@ const IMGS = [
   'sanifluide Tetouan (103 of 114).jpg','sanifluide Tetouan (106 of 114).jpg',
 ].map(f => `/images/All/${f}`)
 
+function ItemModal({ item, onClose }) {
+  if (!item) return null
+  return (
+    <div className="svc-modal-backdrop" onClick={onClose}>
+      <div className="svc-modal" onClick={e => e.stopPropagation()}>
+        <button className="svc-modal__close" onClick={onClose} aria-label="Fermer"><X size={20} /></button>
+        <div className="svc-modal__header">
+          <div className="svc-modal__icon">{item.iconLg}</div>
+          <h3 className="svc-modal__title">{item.title}</h3>
+        </div>
+        <p className="svc-modal__intro">{item.details.intro}</p>
+        <ul className="svc-modal__list">
+          {item.details.points.map((pt, i) => (
+            <li key={i} className="svc-modal__item">
+              <CheckCircle2 size={16} className="svc-modal__check" />
+              {pt}
+            </li>
+          ))}
+        </ul>
+        <div className="svc-modal__footer-note">{item.details.footer}</div>
+        <a
+          href="https://wa.me/212661986306?text=Bonjour%20Sanifluide%2C%20je%20voudrais%20en%20savoir%20plus%20sur%20vos%20services."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="svc-modal__cta"
+        >
+          Nous contacter sur WhatsApp →
+        </a>
+      </div>
+    </div>
+  )
+}
+
 export default function WhyUs() {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
   const [lightbox, setLightbox] = useState(false)
   const [page, setPage] = useState(0)
+  const [activeItem, setActiveItem] = useState(null)
   const total = IMGS.length
   const totalPages = Math.ceil(total / 4)
 
@@ -175,11 +277,12 @@ export default function WhyUs() {
             </div>
             <div className="whyus__grid">
               {ITEMS.map(item => (
-                <div className="whyus__item" key={item.title}>
+                <div className="whyus__item whyus__item--clickable" key={item.title} onClick={() => setActiveItem(item)}>
                   <div className="whyus__item-icon">{item.icon}</div>
                   <div>
                     <div className="whyus__item-title">{item.title}</div>
                     <div className="whyus__item-text">{item.text}</div>
+                    <span className="whyus__item-more">En savoir plus →</span>
                   </div>
                 </div>
               ))}
@@ -243,6 +346,8 @@ export default function WhyUs() {
           </div>
         </div>
       )}
+
+      <ItemModal item={activeItem} onClose={() => setActiveItem(null)} />
     </section>
   )
 }

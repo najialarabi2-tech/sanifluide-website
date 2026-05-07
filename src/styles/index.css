@@ -686,6 +686,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: .85rem;
   white-space: nowrap;
   transition: transform var(--t) var(--ease), box-shadow var(--t), border-color var(--t);
+  cursor: pointer;
+  overflow: visible;
 }
 .hero__card:hover {
   transform: translateY(-4px) !important;
@@ -704,6 +706,54 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .hero__card-title { font-size: .9rem; font-weight: 700; color: var(--white); display: block; }
 .hero__card-sub { font-size: .75rem; color: var(--muted); }
+
+/* Popup panel — fixed position so it's never clipped by overflow:hidden */
+.hero__card-popup-fixed {
+  position: fixed;
+  min-width: 210px;
+  background: rgba(15,15,15,.97);
+  border: 1px solid rgba(242,101,34,.35);
+  border-radius: 12px;
+  padding: .85rem 1rem;
+  box-shadow: 0 12px 36px rgba(0,0,0,.6);
+  z-index: 9500;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: heroPopIn .18s ease;
+  white-space: normal;
+  pointer-events: auto;
+}
+@keyframes heroPopIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero__card-popup-hint {
+  font-size: .76rem;
+  color: rgba(255,255,255,.55);
+  margin-bottom: .6rem;
+  line-height: 1.5;
+}
+.hero__card-popup-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.hero__card-popup-list li {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.9);
+}
+.hero__card-popup-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+}
 
 .hero__card--1 { top: 30px; left: 10%; animation: float1 6s ease-in-out infinite; will-change: transform; }
 .hero__card--2 { top: 50%; right: 0; animation: float2 7s ease-in-out infinite; will-change: transform; }
@@ -1489,6 +1539,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: .2rem;
 }
 .whyus__item-text { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+.whyus__item--clickable {
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.whyus__item--clickable:hover {
+  border-color: rgba(242,101,34,.4);
+  background: rgba(242,101,34,.05);
+  transform: translateY(-2px);
+}
+.whyus__item-more {
+  display: inline-block;
+  margin-top: .5rem;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--orange);
+  letter-spacing: .02em;
+}
 
 /* =====================================================
    SERVICE MODAL

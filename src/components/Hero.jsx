@@ -19,14 +19,52 @@ const WhatsAppIcon = () => (
 const go = (href) => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
 
 const CARDS = [
-  { icon: <Wind size={22} />, title: 'Ventilation', sub: 'VMC double flux', cls: 'hero__card--1' },
-  { icon: <Snowflake size={22} />, title: 'Climatisation', sub: 'VRV / Multi-split', cls: 'hero__card--2' },
-  { icon: <Flame size={22} />, title: 'Chauffage', sub: 'PAC & Chaudières', cls: 'hero__card--3' },
-  { icon: <ShieldAlert size={22} />, title: 'Incendie', sub: 'Détection & Sprinklers', cls: 'hero__card--4' },
+  {
+    icon: <Wind size={22} />,
+    title: 'Ventilation',
+    sub: 'VMC double flux',
+    cls: 'hero__card--1',
+    hint: 'Qualité d\'air optimale, énergie récupérée.',
+    bullets: ['VMC simple & double flux', 'Ventilation industrielle', 'Désenfumage & secours'],
+  },
+  {
+    icon: <Snowflake size={22} />,
+    title: 'Climatisation',
+    sub: 'VRV / Multi-split',
+    cls: 'hero__card--2',
+    hint: 'Confort thermique garanti toute l\'année.',
+    bullets: ['Systèmes VRV / VRF', 'Multi-split & centralisé', 'BMS & domotique'],
+  },
+  {
+    icon: <Flame size={22} />,
+    title: 'Chauffage',
+    sub: 'PAC & Chaudières',
+    cls: 'hero__card--3',
+    hint: 'Performance énergétique maximale.',
+    bullets: ['Pompes à chaleur', 'Planchers chauffants', 'Chaudières à condensation'],
+  },
+  {
+    icon: <ShieldAlert size={22} />,
+    title: 'Incendie',
+    sub: 'Détection & Sprinklers',
+    cls: 'hero__card--4',
+    hint: 'Mise en conformité totale de vos bâtiments.',
+    bullets: ['Détection & SSI', 'Sprinklers & RIA', 'Désenfumage réglementaire'],
+  },
 ]
 
 export default function Hero() {
   const [orbitHovered, setOrbitHovered] = useState(false)
+  const [activeCard, setActiveCard] = useState(null)
+  const [popupPos, setPopupPos] = useState({ top: 0, left: 0 })
+
+  const handleCardEnter = (e, title) => {
+    setActiveCard(title)
+    const rect = e.currentTarget.getBoundingClientRect()
+    const top = rect.bottom + window.scrollY + 10
+    const left = Math.min(rect.left, window.innerWidth - 230)
+    setPopupPos({ top, left })
+  }
   return (
     <section className="hero" id="hero">
       {/* Looping background video */}
@@ -135,7 +173,13 @@ export default function Hero() {
           </div>
 
           {CARDS.map(c => (
-            <div className={`hero__card ${c.cls}`} key={c.title}>
+            <div
+              className={`hero__card ${c.cls}${activeCard === c.title ? ' hero__card--active' : ''}`}
+              key={c.title}
+              onMouseEnter={e => handleCardEnter(e, c.title)}
+              onMouseLeave={() => setActiveCard(null)}
+              onClick={e => activeCard === c.title ? setActiveCard(null) : handleCardEnter(e, c.title)}
+            >
               <div className="hero__card-icon">{c.icon}</div>
               <div>
                 <span className="hero__card-title">{c.title}</span>
@@ -143,6 +187,24 @@ export default function Hero() {
               </div>
             </div>
           ))}
+
+          {/* Fixed popup rendered outside overflow:hidden hero */}
+          {activeCard && (() => {
+            const card = CARDS.find(c => c.title === activeCard)
+            return card ? (
+              <div
+                className="hero__card-popup-fixed"
+                style={{ top: popupPos.top, left: popupPos.left }}
+                onMouseEnter={() => setActiveCard(activeCard)}
+                onMouseLeave={() => setActiveCard(null)}
+              >
+                <p className="hero__card-popup-hint">{card.hint}</p>
+                <ul className="hero__card-popup-list">
+                  {card.bullets.map(b => <li key={b}><span className="hero__card-popup-dot" />{b}</li>)}
+                </ul>
+              </div>
+            ) : null
+          })()}
         </div>
       </div>
 
