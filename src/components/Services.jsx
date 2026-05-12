@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import { Wind, Snowflake, Flame, ShieldAlert, CheckCircle2 } from 'lucide-react'
 
@@ -120,22 +120,10 @@ const SERVICES = [
 export default function Services() {
   const ref = useReveal()
   const [active, setActive] = useState(0)
-  const pausedRef = useRef(false)
-  const resumeTimerRef = useRef(null)
-
-  // Auto-cycle every 5 s; pauses when user interacts
-  useEffect(() => {
-    const t = setInterval(() => {
-      if (!pausedRef.current) setActive(a => (a + 1) % SERVICES.length)
-    }, 5000)
-    return () => clearInterval(t)
-  }, [])
+  const faqRef = useRef(null)
 
   const handleSelect = (i) => {
     setActive(i)
-    pausedRef.current = true
-    clearTimeout(resumeTimerRef.current)
-    resumeTimerRef.current = setTimeout(() => { pausedRef.current = false }, 12000)
   }
 
   const svc = SERVICES[active]
@@ -162,14 +150,7 @@ export default function Services() {
           </p>
         </div>
 
-        <div
-          className="services__explorer"
-          onMouseEnter={() => { pausedRef.current = true }}
-          onMouseLeave={() => {
-            clearTimeout(resumeTimerRef.current)
-            resumeTimerRef.current = setTimeout(() => { pausedRef.current = false }, 3000)
-          }}
-        >
+        <div className="services__explorer">
           {/* Left: tab list */}
           <div className="services__tabs">
             {SERVICES.map((s, i) => (
@@ -177,7 +158,6 @@ export default function Services() {
                 key={s.num}
                 className={`svc-tab${active === i ? ' svc-tab--active' : ''}`}
                 onClick={() => handleSelect(i)}
-                onMouseEnter={() => handleSelect(i)}
               >
                 <div className="svc-tab__num">{s.num}</div>
                 <div className="svc-tab__icon">{s.icon}</div>
@@ -236,7 +216,7 @@ export default function Services() {
         </div>
 
         {/* FAQ section — SEO rich content, changes with active service tab */}
-        <div className="services__faq" aria-label={`Questions fréquentes — ${svc.title}`}>
+        <div className="services__faq" aria-label={`Questions fréquentes — ${svc.title}`} ref={faqRef}>
           <h3 className="services__faq-title">
             Questions fréquentes — <span>{svc.title}</span>
           </h3>
