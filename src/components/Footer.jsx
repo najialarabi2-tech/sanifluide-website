@@ -140,7 +140,7 @@ export default function Footer() {
 
             {/* Brand column */}
             <div className="footer__brand">
-              <img src="/images/logo.png" alt="Sanifluide" className="footer__logo-img" />
+              <img src="/images/logo.png" alt="Sanifluide Maroc — Expert en génie climatique et sécurité incendie" className="footer__logo-img" />
               <p className="footer__desc">
                 Expert en ventilation, climatisation, chauffage et protection incendie depuis plus de <strong>30 ans</strong>.
                 Votre partenaire de confiance pour tous vos projets de génie climatique.

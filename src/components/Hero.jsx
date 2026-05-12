@@ -75,6 +75,7 @@ export default function Hero() {
         muted
         playsInline
         preload="auto"
+        poster="/images/All/DSC00160.JPG"
       >
         <source src="https://res.cloudinary.com/dm5ez3zp8/video/upload/Video1_skme9w" type="video/mp4" />
       </video>
@@ -88,6 +89,7 @@ export default function Hero() {
             Expert en génie climatique &amp; sécurité incendie
           </div>
           <h1 className="hero__title">
+            <span className="sr-only">Expert en génie climatique et sécurité incendie au Maroc depuis 1996 — </span>
             Votre<br />
             confort,<br />
             <em className="hero__notre">notre</em> art.
@@ -168,7 +170,7 @@ export default function Hero() {
               onMouseLeave={() => setOrbitHovered(false)}
             >
               <div className="hero__orbit-glow" />
-              <img src="/images/logo.png" alt="Sanifluide" className="hero__ring-logo-img" />
+              <img src="/images/logo.png" alt="Sanifluide Maroc — Expert en génie climatique depuis 1996" className="hero__ring-logo-img" />
             </a>
           </div>
 

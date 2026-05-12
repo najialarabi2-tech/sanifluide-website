@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sanifluide.com/sitemap.xml
+# Bloquer les assets non-indexables
+Disallow: /src/
+Disallow: /*.jsx$
+Disallow: /*.js$
+Disallow: /node_modules/
+
+# Autoriser les ressources nécessaires au rendu
+Allow: /images/
+Allow: /public/
+
+Sitemap: https://www.sanifluide.com/sitemap.xml

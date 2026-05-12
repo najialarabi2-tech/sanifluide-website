@@ -58,7 +58,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <a href="#hero" className="navbar__logo" onClick={e => go(e, '#hero')}>
-            <img src="/images/logo.png" alt="Sanifluide" className="navbar__logo-img" />
+            <img src="/images/logo.png" alt="Sanifluide Maroc — Génie climatique & sécurité incendie" className="navbar__logo-img" />
           </a>
 
           {/* Links */}

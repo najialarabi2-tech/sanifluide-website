@@ -110,7 +110,7 @@ export default function WhatsAppChat() {
           {/* Header */}
           <div className="wachat__header">
             <div className="wachat__avatar">
-              <img src="/images/Icon.png" alt="Sanifluide" />
+              <img src="/images/Icon.png" alt="Contacter Sanifluide Maroc sur WhatsApp" />
               <span className="wachat__status" />
             </div>
             <div className="wachat__info">
