@@ -62,13 +62,19 @@ export default function Hero() {
   useEffect(() => {
     const vid = videoRef.current
     if (!vid) return
-    const tryPlay = () => vid.play().catch(() => {})
-    vid.addEventListener('pause', tryPlay)
-    vid.addEventListener('ended', tryPlay)
-    tryPlay()
+    const handleEnded = () => {
+      vid.currentTime = 0
+      vid.play().catch(() => {})
+    }
+    const handlePause = () => {
+      if (!vid.ended) vid.play().catch(() => {})
+    }
+    vid.addEventListener('ended', handleEnded)
+    vid.addEventListener('pause', handlePause)
+    vid.play().catch(() => {})
     return () => {
-      vid.removeEventListener('pause', tryPlay)
-      vid.removeEventListener('ended', tryPlay)
+      vid.removeEventListener('ended', handleEnded)
+      vid.removeEventListener('pause', handlePause)
     }
   }, [])
 
