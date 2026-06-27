@@ -98,7 +98,8 @@ export default function Hero() {
         preload="auto"
         poster="/images/All/DSC00160.JPG"
       >
-        <source src="https://res.cloudinary.com/dm5ez3zp8/video/upload/Video1_skme9w.mp4" type="video/mp4" />
+        <source src="https://www.dropbox.com/scl/fi/kdqp24ppmu4rg5ozk9ft7/Video1.mov?rlkey=aol64m0ab5ygqva2j37k7y2dh&st=zgm8mleg&dl=1" type="video/quicktime" />
+        <source src="https://www.dropbox.com/scl/fi/kdqp24ppmu4rg5ozk9ft7/Video1.mov?rlkey=aol64m0ab5ygqva2j37k7y2dh&st=zgm8mleg&dl=1" type="video/mp4" />
       </video>
       <div className="hero__video-overlay" />
 
