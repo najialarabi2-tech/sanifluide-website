@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Wind, Snowflake, Flame, ShieldAlert, Send } from 'lucide-react'
 
 const InstagramIcon = () => (
@@ -57,6 +57,20 @@ export default function Hero() {
   const [orbitHovered, setOrbitHovered] = useState(false)
   const [activeCard, setActiveCard] = useState(null)
   const [popupPos, setPopupPos] = useState({ top: 0, left: 0 })
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    const vid = videoRef.current
+    if (!vid) return
+    const tryPlay = () => vid.play().catch(() => {})
+    vid.addEventListener('pause', tryPlay)
+    vid.addEventListener('ended', tryPlay)
+    tryPlay()
+    return () => {
+      vid.removeEventListener('pause', tryPlay)
+      vid.removeEventListener('ended', tryPlay)
+    }
+  }, [])
 
   const handleCardEnter = (e, title) => {
     setActiveCard(title)
@@ -69,6 +83,7 @@ export default function Hero() {
     <section className="hero" id="hero">
       {/* Looping background video */}
       <video
+        ref={videoRef}
         className="hero__video"
         autoPlay
         loop
@@ -77,7 +92,7 @@ export default function Hero() {
         preload="auto"
         poster="/images/All/DSC00160.JPG"
       >
-        <source src="https://res.cloudinary.com/dm5ez3zp8/video/upload/Video1_skme9w" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dm5ez3zp8/video/upload/Video1_skme9w.mp4" type="video/mp4" />
       </video>
       <div className="hero__video-overlay" />
 
